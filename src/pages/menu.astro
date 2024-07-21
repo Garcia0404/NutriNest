@@ -1,0 +1,25 @@
+---
+import FoodCard from "../components/foods/FoodCard.astro"
+import Layout from "../layouts/Layout.astro"
+import { foods } from "../utils/foods"
+---
+
+<Layout title="Menús">
+  <main class="pb-16 h-full overflow-auto mt-24">
+    <div class="justify-center flex flex-col overflow-auto me-1">
+      <div class="mb-3">
+        <h2 class="text-5xl font-medium mb-5">Menús</h2>
+        <p>Observa nuestra gran variedad.</p>
+      </div>
+      <div>
+        <div class="grid sm:grid-cols-2 gap-1">
+          {
+            foods.map(food => (
+              <FoodCard {...food}/>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

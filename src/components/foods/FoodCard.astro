@@ -1,0 +1,32 @@
+---
+interface Food {
+  nombre:string
+  ingredientes:string[]
+  calorías:number
+  proteínas:number
+  valorNutricional:[][]
+  img:string
+  beneficios:string
+}
+const { nombre,ingredientes,calorías,proteínas,valorNutricional,img,beneficios } = Astro.props as Food
+---
+<article class='h-full relative grid group/item'>
+  <span class="relative overflow-hidden">
+    <img width="full" height="auto" src={img} alt={nombre}>
+    <span class="text-white absolute top-0 invisible group-hover/item:visible h-full w-full bg-transparent group-hover/item:bg-[rgba(18,18,18,0.8)] transition-all p-3">
+      <div class="font-medium">INGREDIENTES:</div>
+      <ul class="font-light list-none ps-2">
+        {
+          ingredientes.map((i:string) => (
+            <li>{i.substring(0, 1).toUpperCase() + i.substring(1)}</li>
+          ))
+        }
+      </ul>
+    </span>
+  </span>
+  <h3 class="font-semibold">{nombre}</h3>
+  <div class="mt-auto">
+    <span class="font-medium">Calorías: </span>
+    <span>{calorías}</span>
+  </div>
+</article>
